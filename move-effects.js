@@ -1,8 +1,7 @@
 // =====================================================
 // CHESSMOVELAB
-// SAFE MOVE EFFECTS + SOUND
+// SAFE MOVE EFFECTS + STRONGER SOUND
 //
-// IMPORTANT:
 // This file does NOT modify drawBoard()
 // or chess click logic.
 // =====================================================
@@ -289,6 +288,10 @@ function playCmlMoveSound(
         context.currentTime;
 
 
+    // =================================================
+    // MAIN WOODEN TAP
+    // =================================================
+
     const oscillator =
         context.createOscillator();
 
@@ -304,8 +307,8 @@ function playCmlMoveSound(
     oscillator.frequency.setValueAtTime(
 
         isCapture
-            ? 150
-            : 190,
+            ? 165
+            : 205,
 
         now
     );
@@ -314,10 +317,10 @@ function playCmlMoveSound(
     oscillator.frequency.exponentialRampToValueAtTime(
 
         isCapture
-            ? 80
-            : 105,
+            ? 82
+            : 110,
 
-        now + 0.055
+        now + 0.065
     );
 
 
@@ -330,8 +333,8 @@ function playCmlMoveSound(
     gain.gain.exponentialRampToValueAtTime(
 
         isCapture
-            ? 0.15
-            : 0.10,
+            ? 0.25
+            : 0.18,
 
         now + 0.004
     );
@@ -339,7 +342,7 @@ function playCmlMoveSound(
 
     gain.gain.exponentialRampToValueAtTime(
         0.0001,
-        now + 0.075
+        now + 0.09
     );
 
 
@@ -359,7 +362,122 @@ function playCmlMoveSound(
 
 
     oscillator.stop(
-        now + 0.08
+        now + 0.10
+    );
+
+
+    // =================================================
+    // SMALL SHARP CLICK
+    // =================================================
+
+    const bufferLength =
+        Math.max(
+            1,
+            Math.floor(
+                context.sampleRate *
+                0.025
+            )
+        );
+
+
+    const buffer =
+        context.createBuffer(
+            1,
+            bufferLength,
+            context.sampleRate
+        );
+
+
+    const data =
+        buffer.getChannelData(
+            0
+        );
+
+
+    for (
+        let i = 0;
+        i < bufferLength;
+        i++
+    ) {
+
+        const fade =
+            1 -
+            i / bufferLength;
+
+
+        data[i] =
+            (
+                Math.random() *
+                2 -
+                1
+            ) *
+            fade;
+    }
+
+
+    const noise =
+        context.createBufferSource();
+
+
+    const filter =
+        context.createBiquadFilter();
+
+
+    const noiseGain =
+        context.createGain();
+
+
+    noise.buffer =
+        buffer;
+
+
+    filter.type =
+        "bandpass";
+
+
+    filter.frequency.value =
+        isCapture
+            ? 950
+            : 1250;
+
+
+    filter.Q.value =
+        1;
+
+
+    noiseGain.gain.setValueAtTime(
+
+        isCapture
+            ? 0.16
+            : 0.11,
+
+        now
+    );
+
+
+    noiseGain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + 0.035
+    );
+
+
+    noise.connect(
+        filter
+    );
+
+
+    filter.connect(
+        noiseGain
+    );
+
+
+    noiseGain.connect(
+        context.destination
+    );
+
+
+    noise.start(
+        now
     );
 }
 
@@ -637,8 +755,6 @@ function animateCmlMove(
     }
 
 
-    // Restart CSS animation safely
-
     void square.offsetWidth;
 
 
@@ -694,10 +810,7 @@ let cmlLastPositionKey =
 
 
 // =====================================================
-// BOARD OBSERVER
-//
-// We only WATCH the board.
-// We never replace drawBoard().
+// WATCH BOARD
 // =====================================================
 
 let cmlObserverScheduled =
@@ -719,14 +832,6 @@ function checkCmlBoardChange() {
         return;
     }
 
-
-    // Same FEN means:
-    // user selected a piece,
-    // legal moves appeared,
-    // badge changed,
-    // etc.
-    //
-    // NO SOUND / NO MOVE EFFECT.
 
     if (
         newKey ===
@@ -763,7 +868,7 @@ function checkCmlBoardChange() {
 
 
 // =====================================================
-// START OBSERVING BOARD
+// START OBSERVER
 // =====================================================
 
 if (boardElement) {

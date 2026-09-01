@@ -22,16 +22,11 @@
             border: 1px solid rgba(255,255,255,0.10);
             background: #151b2b;
             color: #ffffff;
-
             padding: 10px 15px;
-
             border-radius: 10px;
-
             font-size: 13px;
             font-weight: 800;
-
             cursor: pointer;
-
             transition: 0.2s ease;
         }
 
@@ -40,32 +35,22 @@
             transform: translateX(-2px);
         }
 
-
         .rating-overview {
             width: 100%;
-
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-
             gap: 12px;
-
             margin: 14px 0 18px;
         }
 
-
         .main-rating-card {
             position: relative;
-
             overflow: hidden;
-
             min-height: 92px;
-
             padding: 15px 18px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             gap: 15px;
 
             background:
@@ -86,16 +71,12 @@
                 rgba(0,0,0,0.18);
         }
 
-
         .main-rating-card::before {
             content: "";
-
             position: absolute;
-
             left: 0;
             top: 0;
             bottom: 0;
-
             width: 4px;
 
             background:
@@ -105,79 +86,51 @@
                 );
         }
 
-
         .main-rating-text {
             min-width: 0;
         }
 
-
         .main-rating-label {
             display: block;
-
             margin-bottom: 5px;
-
             color: #858faa;
-
             font-size: 10px;
-
             font-weight: 900;
-
             letter-spacing: 1.1px;
         }
 
-
         .main-rating-value {
             display: block;
-
             color: #ffffff;
-
             font-size: 30px;
-
             font-weight: 900;
-
             line-height: 1;
         }
 
-
         .main-rating-subtitle {
             display: block;
-
             margin-top: 7px;
-
             color: #737e9b;
-
             font-size: 10px;
         }
-
 
         .rating-icon {
             width: 48px;
             height: 48px;
-
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 13px;
-
-            background:
-                rgba(111,124,255,0.12);
-
-            border:
-                1px solid
-                rgba(130,140,255,0.16);
-
+            background: rgba(111,124,255,0.12);
+            border: 1px solid rgba(130,140,255,0.16);
             font-size: 23px;
         }
-
 
         #topGameRating.loading {
             font-size: 17px;
             color: #8c96af;
         }
-
 
         @media (max-width: 650px) {
 
@@ -203,7 +156,6 @@
 
     <main class="analysis-page">
 
-
         <div class="top-bar">
 
             <button
@@ -212,7 +164,6 @@
             >
                 ← Back to Games
             </button>
-
 
             <div>
 
@@ -226,7 +177,6 @@
 
             </div>
 
-
             <div
                 id="gameResult"
                 class="result-badge"
@@ -238,7 +188,6 @@
 
 
         <section class="game-info">
-
 
             <div class="player-info">
 
@@ -278,12 +227,10 @@
 
             </div>
 
-
         </section>
 
 
         <section class="rating-overview">
-
 
             <div class="main-rating-card">
 
@@ -305,7 +252,6 @@
                     </span>
 
                 </div>
-
 
                 <div class="rating-icon">
                     ♟
@@ -335,19 +281,16 @@
 
                 </div>
 
-
                 <div class="rating-icon">
                     ★
                 </div>
 
             </div>
 
-
         </section>
 
 
         <section class="analysis-layout">
-
 
             <aside class="moves-section">
 
@@ -371,7 +314,6 @@
 
                 </div>
 
-
                 <div
                     id="movesList"
                     class="moves-list"
@@ -390,7 +332,6 @@
                     ></div>
 
                 </div>
-
 
                 <div class="navigation-controls">
 
@@ -420,7 +361,6 @@
 
 
             <aside class="analysis-panel">
-
 
                 <div class="analysis-card">
 
@@ -480,7 +420,6 @@
 
                 </div>
 
-
             </aside>
 
         </section>
@@ -518,6 +457,14 @@
     <!-- EXPLORE UNDO / REDO -->
 
     <script src="explore-navigation-fix.js"></script>
+
+
+    <!--
+        SEPARATE STOCKFISH FOR TRY MODE
+        Main analysis stays running in background
+    -->
+
+    <script src="engine-background-fix.js"></script>
 
 
     <!--
