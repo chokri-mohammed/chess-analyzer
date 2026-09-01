@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chessmovelab.netlify.app/sitemap.xml
