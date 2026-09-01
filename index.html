@@ -9,21 +9,153 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Chess Analyzer</title>
+    <!-- =========================
+         PRIMARY SEO
+    ========================== -->
 
-    <link rel="stylesheet" href="style.css">
+    <title>Free Chess Game Analyzer | ChessMoveLab</title>
+
+    <meta
+        name="description"
+        content="Analyze your Chess.com games for free with ChessMoveLab. Review moves, Stockfish evaluations, best moves, mistakes, blunders, openings, and game performance."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="googlebot"
+        content="index, follow"
+    >
+
+    <meta
+        name="application-name"
+        content="ChessMoveLab"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0d1424"
+    >
+
+    <link
+        rel="canonical"
+        href="https://chessmovelab.netlify.app/"
+    >
+
+
+    <!-- =========================
+         SOCIAL MEDIA PREVIEW
+    ========================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="ChessMoveLab"
+    >
+
+    <meta
+        property="og:title"
+        content="Free Chess Game Analyzer | ChessMoveLab"
+    >
+
+    <meta
+        property="og:description"
+        content="Analyze your chess games with Stockfish. Find your best moves, mistakes, blunders, openings and estimated game performance."
+    >
+
+    <meta
+        property="og:url"
+        content="https://chessmovelab.netlify.app/"
+    >
+
+
+    <!-- =========================
+         TWITTER / X
+    ========================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Free Chess Game Analyzer | ChessMoveLab"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Analyze your chess games with Stockfish and discover your best moves, mistakes, blunders and game performance."
+    >
+
+
+    <!-- =========================
+         FAVICON
+    ========================== -->
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♞</text></svg>"
+    >
+
+
+    <!-- =========================
+         STRUCTURED DATA
+    ========================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ChessMoveLab",
+        "url": "https://chessmovelab.netlify.app/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "description": "Free chess game analyzer powered by Stockfish evaluations. Review moves, openings, mistakes, blunders and game performance.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+
+    <!-- =========================
+         STYLES
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
     <main class="hero">
 
-        <div class="logo-box">
+        <!-- =========================
+             BRAND
+        ========================== -->
+
+        <div
+            class="logo-box"
+            aria-hidden="true"
+        >
             ♞
         </div>
 
         <p class="small-title">
-            CHESS GAME ANALYZER
+            CHESSMOVELAB
         </p>
 
         <h1>
@@ -31,10 +163,15 @@
         </h1>
 
         <p class="description">
-            Enter your Chess.com username and review your recent games,
-            results and moves.
+            Analyze your recent Chess.com games with Stockfish,
+            review your moves and discover mistakes, blunders,
+            best moves and openings.
         </p>
 
+
+        <!-- =========================
+             USERNAME SEARCH
+        ========================== -->
 
         <div class="search-card">
 
@@ -45,15 +182,26 @@
             <input
                 type="text"
                 id="username"
+                name="username"
                 placeholder="Enter your username"
                 autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                enterkeyhint="search"
+                aria-describedby="message"
             >
 
-            <button id="searchBtn">
+            <button
+                id="searchBtn"
+                type="button"
+            >
                 Find My Games
             </button>
 
-            <p id="message"></p>
+            <p
+                id="message"
+                aria-live="polite"
+            ></p>
 
         </div>
 
@@ -71,6 +219,7 @@
             <div class="section-header">
 
                 <div>
+
                     <p class="small-title">
                         RECENT GAMES
                     </p>
@@ -78,6 +227,7 @@
                     <h2>
                         Your Chess.com Games
                     </h2>
+
                 </div>
 
                 <p id="gamesCount"></p>
@@ -94,6 +244,10 @@
 
     </main>
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="script.js"></script>
 
