@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chessmovelab.netlify.app/sitemap.xml
+Sitemap: https://chessmovelab.pages.dev/sitemap.xml
