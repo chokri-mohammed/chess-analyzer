@@ -26,7 +26,6 @@
         }
 
         gtag("js", new Date());
-
         gtag("config", "G-0X8LCSW310");
     </script>
 
@@ -158,6 +157,49 @@
         rel="stylesheet"
         href="style.css"
     >
+
+    <style>
+        .site-footer {
+            width: 100%;
+            margin-top: 70px;
+            padding: 35px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-bottom: 18px;
+        }
+
+        .footer-links a {
+            color: #aab5ca;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-copy {
+            color: #6f7c94;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            color: #66738a;
+            font-size: 12px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 
 
@@ -263,6 +305,45 @@
             ></div>
 
         </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="site-footer">
+
+            <nav
+                class="footer-links"
+                aria-label="Footer navigation"
+            >
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+            </nav>
+
+            <p class="footer-copy">
+                © 2026 ChessMoveLab
+            </p>
+
+            <p class="footer-disclaimer">
+                ChessMoveLab is an independent project and is not affiliated
+                with, endorsed by, or sponsored by Chess.com.
+            </p>
+
+        </footer>
 
     </main>
 
