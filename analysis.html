@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Chess Game Analysis</title>
+
+    <link
+        rel="stylesheet"
+        href="analysis.css"
+    >
+
+    <style>
+
+        /* ==============================
+           BETTER BACK BUTTON
+        ============================== */
+
+        #backToGamesBtn {
+            border: 1px solid rgba(255,255,255,0.10);
+            background: #151b2b;
+            color: #ffffff;
+
+            padding: 10px 15px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        #backToGamesBtn:hover {
+            background: #20283d;
+            transform: translateX(-2px);
+        }
+
+
+        /* ==============================
+           MAIN RATING CARDS
+        ============================== */
+
+        .rating-overview {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+
+            margin: 14px 0 18px;
+        }
+
+
+        .main-rating-card {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 92px;
+
+            padding: 15px 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #171e30,
+                    #101625
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 7px 24px
+                rgba(0,0,0,0.18);
+        }
+
+
+        .main-rating-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 4px;
+
+            background:
+                linear-gradient(
+                    #7582ff,
+                    #9568ff
+                );
+        }
+
+
+        .main-rating-text {
+            min-width: 0;
+        }
+
+
+        .main-rating-label {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #858faa;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.1px;
+        }
+
+
+        .main-rating-value {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+
+        .main-rating-subtitle {
+            display: block;
+
+            margin-top: 7px;
+
+            color: #737e9b;
+
+            font-size: 10px;
+        }
+
+
+        .rating-icon {
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                rgba(111,124,255,0.12);
+
+            border:
+                1px solid
+                rgba(130,140,255,0.16);
+
+            font-size: 23px;
+        }
+
+
+        #topGameRating.loading {
+            font-size: 17px;
+            color: #8c96af;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .rating-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .main-rating-card {
+                min-height: 82px;
+            }
+
+            .main-rating-value {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="analysis-page">
+
+
+        <div class="top-bar">
+
+            <button
+                id="backToGamesBtn"
+                type="button"
+            >
+                ← Back to Games
+            </button>
+
+
+            <div>
+
+                <p class="small-title">
+                    GAME ANALYSIS
+                </p>
+
+                <h1>
+                    Chess Analyzer
+                </h1>
+
+            </div>
+
+
+            <div
+                id="gameResult"
+                class="result-badge"
+            >
+                Loading...
+            </div>
+
+        </div>
+
+
+        <section class="game-info">
+
+
+            <div class="player-info">
+
+                <span>
+                    You
+                </span>
+
+                <strong id="playerName">
+                    -
+                </strong>
+
+                <small id="playerRating">
+                    Rating -
+                </small>
+
+            </div>
+
+
+            <div class="versus">
+                VS
+            </div>
+
+
+            <div class="player-info">
+
+                <span>
+                    Opponent
+                </span>
+
+                <strong id="opponentName">
+                    -
+                </strong>
+
+                <small id="opponentRating">
+                    Rating -
+                </small>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ===================================
+             NEW: CLEAR ELO + GAME RATING
+        ==================================== -->
+
+        <section class="rating-overview">
+
+
+            <div class="main-rating-card">
+
+                <div class="main-rating-text">
+
+                    <span class="main-rating-label">
+                        YOUR ELO
+                    </span>
+
+                    <strong
+                        id="topPlayerElo"
+                        class="main-rating-value"
+                    >
+                        -
+                    </strong>
+
+                    <span class="main-rating-subtitle">
+                        Rating when this game was played
+                    </span>
+
+                </div>
+
+
+                <div class="rating-icon">
+                    ♟
+                </div>
+
+            </div>
+
+
+            <div class="main-rating-card">
+
+                <div class="main-rating-text">
+
+                    <span class="main-rating-label">
+                        GAME RATING
+                    </span>
+
+                    <strong
+                        id="topGameRating"
+                        class="main-rating-value loading"
+                    >
+                        Analyzing...
+                    </strong>
+
+                    <span class="main-rating-subtitle">
+                        Estimated performance for this game
+                    </span>
+
+                </div>
+
+
+                <div class="rating-icon">
+                    ★
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <section class="analysis-layout">
+
+
+            <aside class="moves-section">
+
+                <div class="moves-header">
+
+                    <div>
+
+                        <p class="small-title">
+                            GAME MOVES
+                        </p>
+
+                        <h2>
+                            Moves
+                        </h2>
+
+                    </div>
+
+                    <p id="totalMoves">
+                        0
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="movesList"
+                    class="moves-list"
+                ></div>
+
+            </aside>
+
+
+            <div class="board-area">
+
+                <div class="board-frame">
+
+                    <div
+                        id="chessBoard"
+                        class="chess-board"
+                    ></div>
+
+                </div>
+
+
+                <div class="navigation-controls">
+
+                    <button id="firstMoveBtn">
+                        ⏮
+                    </button>
+
+                    <button id="previousMoveBtn">
+                        ← Previous
+                    </button>
+
+                    <div id="moveCounter">
+                        Move 0 / 0
+                    </div>
+
+                    <button id="nextMoveBtn">
+                        Next →
+                    </button>
+
+                    <button id="lastMoveBtn">
+                        ⏭
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <aside class="analysis-panel">
+
+
+                <div class="analysis-card">
+
+                    <p class="panel-label">
+                        MOVE QUALITY
+                    </p>
+
+                    <h2 id="moveQuality">
+                        Start Position
+                    </h2>
+
+                    <p id="movePlayed">
+                        No move selected
+                    </p>
+
+                </div>
+
+
+                <div class="analysis-card">
+
+                    <p class="panel-label">
+                        EVALUATION
+                    </p>
+
+                    <div
+                        id="evaluation"
+                        class="evaluation-value"
+                    >
+                        0.0
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-card">
+
+                    <p class="panel-label">
+                        BEST MOVE
+                    </p>
+
+                    <div id="bestMove">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-card">
+
+                    <p class="panel-label">
+                        ENGINE MESSAGE
+                    </p>
+
+                    <p id="engineMessage">
+                        Engine analysis will appear here.
+                    </p>
+
+                </div>
+
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <script src="analysis.js"></script>
+
+    <script src="whatif.js"></script>
+
+    <script src="analysis-ui.js"></script>
+
+</body>
+
+</html>

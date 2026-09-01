@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Chess Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="hero">
+
+        <div class="logo-box">
+            ♞
+        </div>
+
+        <p class="small-title">
+            CHESS GAME ANALYZER
+        </p>
+
+        <h1>
+            Analyze Your Chess Games
+        </h1>
+
+        <p class="description">
+            Enter your Chess.com username and review your recent games,
+            results and moves.
+        </p>
+
+
+        <div class="search-card">
+
+            <label for="username">
+                Chess.com Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                autocomplete="off"
+            >
+
+            <button id="searchBtn">
+                Find My Games
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- =========================
+             GAMES RESULTS
+        ========================== -->
+
+        <section
+            id="gamesSection"
+            class="games-section"
+            hidden
+        >
+
+            <div class="section-header">
+
+                <div>
+                    <p class="small-title">
+                        RECENT GAMES
+                    </p>
+
+                    <h2>
+                        Your Chess.com Games
+                    </h2>
+                </div>
+
+                <p id="gamesCount"></p>
+
+            </div>
+
+
+            <div
+                id="gamesList"
+                class="games-list"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
