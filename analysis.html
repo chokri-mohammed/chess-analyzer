@@ -18,10 +18,6 @@
 
     <style>
 
-        /* ==============================
-           BETTER BACK BUTTON
-        ============================== */
-
         #backToGamesBtn {
             border: 1px solid rgba(255,255,255,0.10);
             background: #151b2b;
@@ -44,10 +40,6 @@
             transform: translateX(-2px);
         }
 
-
-        /* ==============================
-           MAIN RATING CARDS
-        ============================== */
 
         .rating-overview {
             width: 100%;
@@ -518,18 +510,22 @@
     <script src="analysis-ui.js"></script>
 
 
-    <!-- BEST MOVE FIX + EVALUATION BAR -->
+    <!-- BADGE FIX + EVALUATION BAR -->
 
     <script src="analysis-fix.js"></script>
 
 
-    <!--
-        MUST STAY LAST
-        FIXES PREVIOUS / UNDO
-        INSIDE EXPLORE MODE
-    -->
+    <!-- EXPLORE UNDO / REDO -->
 
     <script src="explore-navigation-fix.js"></script>
+
+
+    <!--
+        MUST STAY LAST
+        MOVE ANIMATION + SOUND
+    -->
+
+    <script src="move-effects.js"></script>
 
 
 </body>
