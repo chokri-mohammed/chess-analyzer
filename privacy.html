@@ -26,28 +26,6 @@
         href="https://chessmovelab.pages.dev/privacy.html"
     >
 
-
-    <!-- =========================
-         GOOGLE ANALYTICS
-    ========================== -->
-
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-0X8LCSW310"
-    ></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-        gtag("config", "G-0X8LCSW310");
-    </script>
-
-
     <style>
         * {
             box-sizing: border-box;
@@ -197,6 +175,19 @@
             font-size: 14px;
         }
 
+        .cookie-settings {
+            margin-top: 10px;
+            border: 0;
+            background: none;
+            color: #9daaff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cookie-settings:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 650px) {
 
             .container {
@@ -314,8 +305,8 @@
 
             <p>
                 ChessMoveLab may temporarily store certain information in your
-                browser, such as selected game information or navigation data,
-                so that analysis features work correctly.
+                browser, such as selected game information, navigation data
+                and privacy preferences, so that website features work correctly.
             </p>
 
             <p>
@@ -330,11 +321,22 @@
 
             <p>
                 ChessMoveLab uses Google Analytics to understand how visitors
-                use the website and to help us improve the service.
+                use the website and to help improve the service.
             </p>
 
             <p>
-                Google Analytics may collect information such as:
+                Google Analytics is loaded only after you choose to accept
+                analytics through the privacy consent banner.
+            </p>
+
+            <p>
+                If you reject analytics, ChessMoveLab will remember that choice
+                in your browser and will not intentionally load Google Analytics
+                through our consent system.
+            </p>
+
+            <p>
+                Google Analytics may process information such as:
             </p>
 
             <ul>
@@ -347,7 +349,7 @@
             </ul>
 
             <p>
-                Google may process this information according to its own
+                Google processes analytics information according to its own
                 privacy policies.
             </p>
 
@@ -364,18 +366,39 @@
 
 
             <h2>
-                5. Cookies and Similar Technologies
+                5. Analytics Consent
             </h2>
 
             <p>
-                Third-party services used by ChessMoveLab, including analytics
-                services, may use cookies or similar technologies to measure
-                website activity and improve their services.
+                When you first visit ChessMoveLab, you may be asked whether
+                you want to accept or reject analytics.
+            </p>
+
+            <p>
+                Your choice is saved locally in your browser.
+                You can change your choice at any time by using the
+                Cookie Settings option available on the website.
             </p>
 
 
             <h2>
-                6. Email Communications
+                6. Cookies and Similar Technologies
+            </h2>
+
+            <p>
+                If you accept analytics, Google Analytics may use cookies
+                or similar technologies to measure website activity.
+            </p>
+
+            <p>
+                Other browser storage used directly by ChessMoveLab may be
+                necessary for features such as game navigation, analysis
+                state or saving your privacy preference.
+            </p>
+
+
+            <h2>
+                7. Email Communications
             </h2>
 
             <p>
@@ -385,18 +408,18 @@
             </p>
 
             <p>
-                This information is used only to respond to your message,
+                This information is used to respond to your message,
                 provide support or review feedback.
             </p>
 
 
             <h2>
-                7. Third-Party Services
+                8. Third-Party Services
             </h2>
 
             <p>
                 ChessMoveLab may depend on third-party services to provide
-                parts of its functionality, including chess game data,
+                parts of its functionality, including public chess game data,
                 analytics and website hosting.
             </p>
 
@@ -407,7 +430,7 @@
 
 
             <h2>
-                8. Data Security
+                9. Data Security
             </h2>
 
             <p>
@@ -418,7 +441,7 @@
 
 
             <h2>
-                9. Children's Privacy
+                10. Children's Privacy
             </h2>
 
             <p>
@@ -433,7 +456,7 @@
 
 
             <h2>
-                10. Changes to This Policy
+                11. Changes to This Policy
             </h2>
 
             <p>
@@ -443,12 +466,12 @@
             </p>
 
             <p>
-                The latest version will always be published on this page.
+                The latest version will be published on this page.
             </p>
 
 
             <h2>
-                11. Contact
+                12. Contact
             </h2>
 
             <p>
@@ -477,10 +500,26 @@
 
 
         <footer>
-            © 2026 ChessMoveLab
+
+            <p>
+                © 2026 ChessMoveLab
+            </p>
+
+            <button
+                class="cookie-settings"
+                type="button"
+                onclick="openCookieSettings()"
+            >
+                Cookie Settings
+            </button>
+
         </footer>
 
     </div>
+
+
+    <!-- COOKIE / ANALYTICS CONSENT -->
+    <script src="consent.js"></script>
 
 </body>
 

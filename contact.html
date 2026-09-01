@@ -26,28 +26,6 @@
         href="https://chessmovelab.pages.dev/contact.html"
     >
 
-
-    <!-- =========================
-         GOOGLE ANALYTICS
-    ========================== -->
-
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-0X8LCSW310"
-    ></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-        gtag("config", "G-0X8LCSW310");
-    </script>
-
-
     <style>
         * {
             box-sizing: border-box;
@@ -227,6 +205,19 @@
             font-size: 14px;
         }
 
+        .cookie-settings {
+            margin-top: 10px;
+            border: 0;
+            background: none;
+            color: #9daaff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cookie-settings:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 650px) {
 
             .container {
@@ -362,10 +353,22 @@
 
 
         <footer>
-            © 2026 ChessMoveLab
+            <p>© 2026 ChessMoveLab</p>
+
+            <button
+                class="cookie-settings"
+                type="button"
+                onclick="openCookieSettings()"
+            >
+                Cookie Settings
+            </button>
         </footer>
 
     </div>
+
+
+    <!-- COOKIE / ANALYTICS CONSENT -->
+    <script src="consent.js"></script>
 
 </body>
 

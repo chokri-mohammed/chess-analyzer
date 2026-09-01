@@ -26,26 +26,6 @@
         href="https://chessmovelab.pages.dev/terms.html"
     >
 
-
-    <!-- GOOGLE ANALYTICS -->
-
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-0X8LCSW310"
-    ></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-        gtag("config", "G-0X8LCSW310");
-    </script>
-
-
     <style>
         * {
             box-sizing: border-box;
@@ -193,6 +173,19 @@
             margin-top: 40px;
             color: #7f8ba3;
             font-size: 14px;
+        }
+
+        .cookie-settings {
+            margin-top: 10px;
+            border: 0;
+            background: none;
+            color: #9daaff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cookie-settings:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 650px) {
@@ -352,7 +345,9 @@
             </p>
 
             <ul>
-                <li>Break applicable laws or regulations.</li>
+                <li>
+                    Break applicable laws or regulations.
+                </li>
 
                 <li>
                     Attempt to disrupt, damage or overload the website.
@@ -451,7 +446,22 @@
 
 
             <h2>
-                12. Changes to These Terms
+                12. Analytics and Privacy
+            </h2>
+
+            <p>
+                ChessMoveLab may use analytics services only according to
+                the privacy choices available on the website.
+            </p>
+
+            <p>
+                You can review or change your analytics preference through
+                the Cookie Settings option.
+            </p>
+
+
+            <h2>
+                13. Changes to These Terms
             </h2>
 
             <p>
@@ -461,7 +471,7 @@
 
 
             <h2>
-                13. Contact
+                14. Contact
             </h2>
 
             <p>
@@ -490,10 +500,26 @@
 
 
         <footer>
-            © 2026 ChessMoveLab
+
+            <p>
+                © 2026 ChessMoveLab
+            </p>
+
+            <button
+                class="cookie-settings"
+                type="button"
+                onclick="openCookieSettings()"
+            >
+                Cookie Settings
+            </button>
+
         </footer>
 
     </div>
+
+
+    <!-- COOKIE / ANALYTICS CONSENT -->
+    <script src="consent.js"></script>
 
 </body>
 
