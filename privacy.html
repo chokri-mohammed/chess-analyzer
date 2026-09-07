@@ -13,7 +13,7 @@
 
     <meta
         name="description"
-        content="Read the ChessMoveLab Privacy Policy and learn how information, analytics data and chess game information may be processed when using the site."
+        content="Read the ChessMoveLab Privacy Policy and learn how information, analytics, advertising, cookies and public chess game data may be processed when using the site."
     >
 
     <meta
@@ -27,6 +27,7 @@
     >
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -35,7 +36,12 @@
 
         body {
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background:
                 radial-gradient(
                     circle at top,
@@ -43,7 +49,9 @@
                     #0d1424 48%,
                     #080d18 100%
                 );
+
             color: #ffffff;
+
             line-height: 1.7;
         }
 
@@ -64,19 +72,27 @@
             display: flex;
             align-items: center;
             gap: 12px;
+
             color: #ffffff;
+
             text-decoration: none;
+
             font-weight: 800;
+
             letter-spacing: 2px;
         }
 
         .logo {
             width: 48px;
             height: 48px;
+
             display: grid;
             place-items: center;
+
             border-radius: 14px;
+
             font-size: 28px;
+
             background:
                 linear-gradient(
                     135deg,
@@ -87,60 +103,121 @@
 
         .home-link {
             text-decoration: none;
+
             color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+
             padding: 10px 18px;
+
             border-radius: 10px;
+
             transition: 0.2s;
         }
 
         .home-link:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
         }
 
         .card {
-            background: rgba(18, 27, 47, 0.82);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                rgba(
+                    18,
+                    27,
+                    47,
+                    0.82
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
             border-radius: 24px;
+
             padding: 50px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
         }
 
         .small-title {
             color: #9daaff;
+
             font-size: 13px;
+
             font-weight: 800;
+
             letter-spacing: 4px;
+
             margin-bottom: 16px;
         }
 
         h1 {
-            font-size: clamp(38px, 6vw, 60px);
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    60px
+                );
+
             line-height: 1.05;
+
             margin-bottom: 15px;
         }
 
         .updated {
             color: #7f8ba3;
+
             font-size: 14px;
+
             margin-bottom: 35px;
         }
 
         h2 {
             margin-top: 38px;
+
             margin-bottom: 12px;
+
             font-size: 24px;
         }
 
         p {
             color: #c3ccdc;
+
             font-size: 16px;
+
             margin-bottom: 16px;
         }
 
         ul {
             margin: 10px 0 20px 25px;
+
             color: #c3ccdc;
         }
 
@@ -158,35 +235,107 @@
 
         .notice {
             margin-top: 35px;
+
             padding: 22px;
+
             border-radius: 15px;
-            background: rgba(113, 92, 255, 0.10);
-            border: 1px solid rgba(133, 115, 255, 0.25);
+
+            background:
+                rgba(
+                    113,
+                    92,
+                    255,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    133,
+                    115,
+                    255,
+                    0.25
+                );
         }
 
         .notice p {
             margin: 7px 0 0;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================== */
+
         footer {
             text-align: center;
+
             margin-top: 40px;
+
             color: #7f8ba3;
+
             font-size: 14px;
         }
 
-        .cookie-settings {
-            margin-top: 10px;
-            border: 0;
-            background: none;
+        footer p {
+            color: #7f8ba3;
+
+            font-size: 14px;
+
+            margin-bottom: 0;
+        }
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px 22px;
+
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
             color: #9daaff;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .cookie-settings {
+            border: 0;
+
+            padding: 0;
+
+            background: none;
+
+            color: #9daaff;
+
             cursor: pointer;
+
+            font-family: inherit;
+
             font-size: 14px;
         }
 
         .cookie-settings:hover {
+            color: #ffffff;
+
             text-decoration: underline;
         }
+
 
         @media (max-width: 650px) {
 
@@ -204,14 +353,22 @@
 
             .home-link {
                 padding: 8px 12px;
+
                 font-size: 14px;
             }
 
             .card {
                 padding: 28px 22px;
             }
+
+            .footer-links {
+                gap: 10px 16px;
+            }
+
         }
+
     </style>
+
 </head>
 
 
@@ -225,9 +382,17 @@
                 class="brand"
                 href="index.html"
             >
-                <span class="logo">♞</span>
-                <span>CHESSMOVELAB</span>
+
+                <span class="logo">
+                    ♞
+                </span>
+
+                <span>
+                    CHESSMOVELAB
+                </span>
+
             </a>
+
 
             <a
                 class="home-link"
@@ -245,20 +410,26 @@
                 PRIVACY POLICY
             </p>
 
+
             <h1>
                 Your Privacy Matters
             </h1>
 
+
             <p class="updated">
-                Last updated: September 1, 2026
+                Last updated: September 7, 2026
             </p>
 
 
             <p>
                 This Privacy Policy explains how ChessMoveLab may collect,
-                use and process information when you use our website.
+                use and process information when you visit or use the website.
             </p>
 
+
+            <!-- =========================
+                 INFORMATION PROVIDED
+            ========================== -->
 
             <h2>
                 1. Information You Provide
@@ -274,6 +445,10 @@
                 payment information or Chess.com login credentials.
             </p>
 
+
+            <!-- =========================
+                 PUBLIC GAME DATA
+            ========================== -->
 
             <h2>
                 2. Public Chess Game Data
@@ -299,44 +474,52 @@
             </ul>
 
 
+            <!-- =========================
+                 BROWSER STORAGE
+            ========================== -->
+
             <h2>
                 3. Browser Storage
             </h2>
 
             <p>
-                ChessMoveLab may temporarily store certain information in your
-                browser, such as selected game information, navigation data
-                and privacy preferences, so that website features work correctly.
+                ChessMoveLab may store certain information in your browser
+                so that website features work correctly.
             </p>
 
             <p>
-                This browser storage remains on your device unless it is removed
-                by the website or cleared through your browser.
+                This may include selected game information, navigation state,
+                analysis information and your privacy or consent preferences.
             </p>
 
+            <p>
+                Information stored locally in your browser generally remains
+                on your device until it is removed by the website or cleared
+                through your browser settings.
+            </p>
+
+
+            <!-- =========================
+                 GOOGLE ANALYTICS
+            ========================== -->
 
             <h2>
                 4. Google Analytics
             </h2>
 
             <p>
-                ChessMoveLab uses Google Analytics to understand how visitors
-                use the website and to help improve the service.
+                ChessMoveLab may use Google Analytics to understand how visitors
+                interact with the website and to help improve its content,
+                performance and features.
             </p>
 
             <p>
-                Google Analytics is loaded only after you choose to accept
-                analytics through the privacy consent banner.
+                Where required by our consent system, Google Analytics is loaded
+                only after you choose to accept analytics.
             </p>
 
             <p>
-                If you reject analytics, ChessMoveLab will remember that choice
-                in your browser and will not intentionally load Google Analytics
-                through our consent system.
-            </p>
-
-            <p>
-                Google Analytics may process information such as:
+                Analytics information may include:
             </p>
 
             <ul>
@@ -354,7 +537,7 @@
             </p>
 
             <p>
-                You can learn more at
+                You can learn more by reading
                 <a
                     href="https://policies.google.com/privacy"
                     target="_blank"
@@ -365,121 +548,245 @@
             </p>
 
 
+            <!-- =========================
+                 GOOGLE ADSENSE
+            ========================== -->
+
             <h2>
-                5. Analytics Consent
+                5. Google AdSense and Advertising
             </h2>
 
             <p>
-                When you first visit ChessMoveLab, you may be asked whether
-                you want to accept or reject analytics.
+                ChessMoveLab may use Google AdSense to display advertising
+                on the website.
             </p>
 
             <p>
-                Your choice is saved locally in your browser.
-                You can change your choice at any time by using the
-                Cookie Settings option available on the website.
+                If advertising is displayed, Google and its advertising partners
+                may use cookies, local storage or similar technologies to provide,
+                measure and improve advertising.
+            </p>
+
+            <p>
+                Depending on your location and your consent choices, advertising
+                may be personalized or non-personalized.
+            </p>
+
+            <p>
+                Advertising providers may process information such as your
+                browser or device type, general location, advertising identifiers,
+                pages visited and interactions with advertisements.
+            </p>
+
+            <p>
+                Google manages information collected through its advertising
+                services according to its own policies.
+            </p>
+
+            <p>
+                For more information, visit
+                <a
+                    href="https://policies.google.com/technologies/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Google's Advertising Policies and Technologies
+                </a>.
             </p>
 
 
+            <!-- =========================
+                 CONSENT
+            ========================== -->
+
             <h2>
-                6. Cookies and Similar Technologies
+                6. Privacy and Cookie Consent
             </h2>
 
             <p>
-                If you accept analytics, Google Analytics may use cookies
-                or similar technologies to measure website activity.
+                When you visit ChessMoveLab, you may be shown privacy or cookie
+                choices depending on the services used by the website and the
+                requirements that apply in your region.
             </p>
 
             <p>
-                Other browser storage used directly by ChessMoveLab may be
-                necessary for features such as game navigation, analysis
-                state or saving your privacy preference.
+                Your choice may be saved locally in your browser so that
+                ChessMoveLab can remember your preference.
+            </p>
+
+            <p>
+                You can review or change your choice by using the
+                <strong>Cookie Settings</strong> option available on the website.
             </p>
 
 
+            <!-- =========================
+                 COOKIES
+            ========================== -->
+
             <h2>
-                7. Email Communications
+                7. Cookies and Similar Technologies
+            </h2>
+
+            <p>
+                ChessMoveLab and third-party services used by the website
+                may use cookies or similar technologies when necessary
+                for website functionality, analytics or advertising.
+            </p>
+
+            <p>
+                Browser storage used directly by ChessMoveLab may also support
+                game navigation, analysis state and privacy preferences.
+            </p>
+
+            <p>
+                You can control or delete cookies through your browser settings.
+                Disabling certain storage technologies may affect some website
+                functionality.
+            </p>
+
+
+            <!-- =========================
+                 EMAIL
+            ========================== -->
+
+            <h2>
+                8. Email Communications
             </h2>
 
             <p>
                 If you contact ChessMoveLab by email, we may receive your
-                email address and any information you choose to include in
-                your message.
+                email address and any information you choose to include
+                in your message.
             </p>
 
             <p>
-                This information is used to respond to your message,
-                provide support or review feedback.
+                This information may be used to respond to your message,
+                provide support, investigate a technical issue or review
+                your feedback.
             </p>
 
 
+            <!-- =========================
+                 THIRD PARTIES
+            ========================== -->
+
             <h2>
-                8. Third-Party Services
+                9. Third-Party Services
             </h2>
 
             <p>
                 ChessMoveLab may depend on third-party services to provide
-                parts of its functionality, including public chess game data,
-                analytics and website hosting.
+                parts of its functionality.
             </p>
 
             <p>
-                These third parties operate according to their own terms
-                and privacy policies.
+                These may include services used for:
+            </p>
+
+            <ul>
+                <li>Public chess game information</li>
+                <li>Chess engine or analysis resources</li>
+                <li>Website analytics</li>
+                <li>Advertising</li>
+                <li>Website hosting and delivery</li>
+            </ul>
+
+            <p>
+                Third-party services operate according to their own
+                privacy policies and terms.
             </p>
 
 
+            <!-- =========================
+                 DATA SECURITY
+            ========================== -->
+
             <h2>
-                9. Data Security
+                10. Data Security
             </h2>
 
             <p>
-                We take reasonable steps to protect the website and the
-                information processed through it. However, no internet
-                service can guarantee absolute security.
+                We take reasonable steps to maintain the security of
+                ChessMoveLab and the information processed through it.
+            </p>
+
+            <p>
+                However, no website, browser or internet service can
+                guarantee absolute security.
             </p>
 
 
+            <!-- =========================
+                 CHILDREN
+            ========================== -->
+
             <h2>
-                10. Children's Privacy
+                11. Children's Privacy
             </h2>
 
             <p>
-                ChessMoveLab is not designed to intentionally collect
-                sensitive personal information from children.
+                ChessMoveLab is a general chess analysis website and does not
+                intentionally ask users to provide sensitive personal information.
             </p>
 
             <p>
-                Users should avoid submitting personal or sensitive
-                information through the website.
+                Users should avoid submitting unnecessary personal or sensitive
+                information through the website or by email.
             </p>
 
 
+            <!-- =========================
+                 LINKS
+            ========================== -->
+
             <h2>
-                11. Changes to This Policy
+                12. External Links
+            </h2>
+
+            <p>
+                ChessMoveLab may contain links to third-party websites.
+                We are not responsible for the privacy practices, content
+                or policies of websites operated by other organizations.
+            </p>
+
+
+            <!-- =========================
+                 POLICY CHANGES
+            ========================== -->
+
+            <h2>
+                13. Changes to This Privacy Policy
             </h2>
 
             <p>
                 We may update this Privacy Policy when ChessMoveLab changes,
-                adds new features or begins using additional third-party
-                services.
+                introduces new features or begins using additional services.
             </p>
 
             <p>
-                The latest version will be published on this page.
+                When this policy is updated, the latest version and its
+                revision date will be published on this page.
             </p>
 
 
+            <!-- =========================
+                 CONTACT
+            ========================== -->
+
             <h2>
-                12. Contact
+                14. Contact
             </h2>
 
             <p>
-                If you have questions about this Privacy Policy, contact us at:
+                If you have questions about this Privacy Policy,
+                you can contact ChessMoveLab at:
             </p>
 
             <p>
-                <a href="mailto:chokrimohammed2005@gmail.com">
+                <a
+                    href="mailto:chokrimohammed2005@gmail.com"
+                >
                     chokrimohammed2005@gmail.com
                 </a>
             </p>
@@ -487,7 +794,9 @@
 
             <div class="notice">
 
-                <strong>Independent project</strong>
+                <strong>
+                    Independent project
+                </strong>
 
                 <p>
                     ChessMoveLab is an independent project and is not affiliated
@@ -501,17 +810,41 @@
 
         <footer>
 
+            <nav
+                class="footer-links"
+                aria-label="Footer navigation"
+            >
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+
+                <button
+                    class="cookie-settings"
+                    type="button"
+                    onclick="openCookieSettings()"
+                >
+                    Cookie Settings
+                </button>
+
+            </nav>
+
+
             <p>
                 © 2026 ChessMoveLab
             </p>
-
-            <button
-                class="cookie-settings"
-                type="button"
-                onclick="openCookieSettings()"
-            >
-                Cookie Settings
-            </button>
 
         </footer>
 
@@ -519,6 +852,7 @@
 
 
     <!-- COOKIE / ANALYTICS CONSENT -->
+
     <script src="consent.js"></script>
 
 </body>

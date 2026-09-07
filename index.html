@@ -164,10 +164,80 @@
 
 
     <!-- =========================
-         FOOTER STYLES
+         PAGE STYLES
     ========================== -->
 
     <style>
+
+        .home-content {
+            width: 100%;
+            max-width: 920px;
+            margin: 80px auto 0;
+            text-align: left;
+        }
+
+        .info-section {
+            margin-bottom: 55px;
+        }
+
+        .info-section h2 {
+            margin-bottom: 18px;
+            color: #ffffff;
+            font-size: clamp(25px, 4vw, 34px);
+            line-height: 1.2;
+        }
+
+        .info-section h3 {
+            margin-top: 26px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-size: 19px;
+        }
+
+        .info-section p,
+        .info-section li {
+            color: #aab5ca;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .info-section p {
+            margin-bottom: 14px;
+        }
+
+        .info-section ul {
+            padding-left: 22px;
+            margin-top: 18px;
+        }
+
+        .info-section li {
+            margin-bottom: 8px;
+        }
+
+        .info-card {
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .faq-item {
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-item h3 {
+            margin: 0 0 8px;
+        }
+
+        .faq-item p {
+            margin: 0;
+        }
+
 
         .site-footer {
             width: 100%;
@@ -222,6 +292,19 @@
             font-size: 12px;
             margin-top: 8px;
             line-height: 1.5;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .home-content {
+                margin-top: 55px;
+            }
+
+            .info-card {
+                padding: 22px 18px;
+            }
+
         }
 
     </style>
@@ -319,6 +402,265 @@
 
         </section>
 
+
+        <!-- =========================
+             ABOUT / CONTENT
+        ========================== -->
+
+        <section class="home-content">
+
+            <section class="info-section">
+
+                <p class="small-title">
+                    ABOUT CHESSMOVELAB
+                </p>
+
+                <h2>
+                    What is ChessMoveLab?
+                </h2>
+
+                <div class="info-card">
+
+                    <p>
+                        ChessMoveLab is a free chess game analysis tool for
+                        players who want to understand what happened in their
+                        games instead of simply looking at the final result.
+                    </p>
+
+                    <p>
+                        Enter your Chess.com username, choose one of your recent
+                        public games, and review the moves on an interactive
+                        board. ChessMoveLab uses Stockfish analysis to help you
+                        examine positions, compare moves, and identify important
+                        moments from the game.
+                    </p>
+
+                    <p>
+                        The goal is to make post-game review simple and practical.
+                        You can move through a game step by step, inspect how the
+                        position changes, and spend more time on the moments that
+                        actually matter.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="info-section">
+
+                <p class="small-title">
+                    HOW IT WORKS
+                </p>
+
+                <h2>
+                    Review your games step by step
+                </h2>
+
+                <p>
+                    ChessMoveLab retrieves available public game information from
+                    Chess.com after you enter a username. You can then select a
+                    recent game and open it in the analysis board.
+                </p>
+
+                <p>
+                    The board recreates the game move by move. Stockfish evaluates
+                    positions and can help you compare the move that was played
+                    with stronger alternatives.
+                </p>
+
+                <p>
+                    You can use the navigation controls to move backward and
+                    forward through the game at your own pace. No ChessMoveLab
+                    account is required to review supported public games.
+                </p>
+
+            </section>
+
+
+            <section class="info-section">
+
+                <p class="small-title">
+                    LEARN FROM YOUR GAMES
+                </p>
+
+                <h2>
+                    Why analyze your chess games?
+                </h2>
+
+                <p>
+                    Playing more games gives you experience, but reviewing those
+                    games helps you understand where your decisions can improve.
+                </p>
+
+                <p>
+                    A single game can reveal an opening problem, a missed tactical
+                    opportunity, an unsafe king, a weak pawn structure, or an
+                    endgame that could have been handled differently.
+                </p>
+
+                <p>
+                    When reviewing a game, useful questions include:
+                </p>
+
+                <ul>
+
+                    <li>
+                        Where did the position start to become difficult?
+                    </li>
+
+                    <li>
+                        Was there a stronger move available?
+                    </li>
+
+                    <li>
+                        Did I miss a tactical idea?
+                    </li>
+
+                    <li>
+                        Was my opening position comfortable?
+                    </li>
+
+                    <li>
+                        Which part of the game should I study next?
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <section class="info-section">
+
+                <p class="small-title">
+                    STOCKFISH ANALYSIS
+                </p>
+
+                <h2>
+                    Understanding engine suggestions
+                </h2>
+
+                <p>
+                    Stockfish is a powerful chess engine that evaluates positions
+                    and calculates strong continuations. An engine score is useful,
+                    but the most important part of analysis is understanding why
+                    the position changed.
+                </p>
+
+                <p>
+                    When Stockfish recommends a different move, compare that move
+                    with the move played in the game. Look for checks, captures,
+                    threats, piece activity, king safety, and changes in the pawn
+                    structure.
+                </p>
+
+                <p>
+                    You do not need to memorize every engine move. The purpose of
+                    reviewing a game is to recognize ideas and patterns that can
+                    help you make better decisions in future games.
+                </p>
+
+            </section>
+
+
+            <section class="info-section">
+
+                <p class="small-title">
+                    FAQ
+                </p>
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+                <div class="info-card">
+
+                    <div class="faq-item">
+
+                        <h3>
+                            Is ChessMoveLab free?
+                        </h3>
+
+                        <p>
+                            Yes. ChessMoveLab can be used to review supported
+                            public Chess.com games without creating a ChessMoveLab
+                            account.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <h3>
+                            Do I need my Chess.com password?
+                        </h3>
+
+                        <p>
+                            No. Never enter your Chess.com password. ChessMoveLab
+                            only needs a public username to retrieve available
+                            public game information.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <h3>
+                            Can beginners use ChessMoveLab?
+                        </h3>
+
+                        <p>
+                            Yes. Beginners can review games move by move and focus
+                            on mistakes, tactical opportunities, and stronger
+                            alternatives.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <h3>
+                            Does ChessMoveLab replace a chess coach?
+                        </h3>
+
+                        <p>
+                            No. Engine analysis is useful for evaluating positions
+                            and finding strong moves, while a coach can provide
+                            personalized explanations and training plans.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <h3>
+                            Why can the best engine move be difficult to understand?
+                        </h3>
+
+                        <p>
+                            Chess engines calculate variations many moves ahead.
+                            Sometimes the purpose of a move only becomes clear
+                            later in the variation, so it can help to explore the
+                            suggested continuation instead of looking only at the
+                            first move.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
 
         <footer class="site-footer">
 

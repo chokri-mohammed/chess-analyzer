@@ -7294,3 +7294,1174 @@ window.addEventListener(
         }
     }
 );
+// =====================================================
+// CHESSMOVELAB
+// BRILLIANT MOVE SYSTEM
+//
+// Adds:
+// - Brilliant !! classification
+// - Brilliant board badge
+// - Brilliant move-history badge
+// - Brilliant visual glow
+// - Brilliant counter in Game Report
+// =====================================================
+
+
+// =====================================================
+// BRILLIANT VISUAL STYLES
+// =====================================================
+
+(function addCmlBrilliantStyles() {
+
+    if (
+        document.querySelector(
+            "#cmlBrilliantStyles"
+        )
+    ) {
+        return;
+    }
+
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.id =
+        "cmlBrilliantStyles";
+
+
+    style.textContent = `
+
+        /* ==========================================
+           BRILLIANT TEXT
+           ========================================== */
+
+        .quality-brilliant {
+
+            color: #7ee7ff !important;
+
+            font-weight: 900;
+
+            text-shadow:
+                0 0 8px
+                rgba(
+                    126,
+                    231,
+                    255,
+                    0.55
+                );
+        }
+
+
+        /* ==========================================
+           BOARD BADGE
+           ========================================== */
+
+        .board-quality-brilliant {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #25c8df,
+                    #5ee7f5
+                );
+
+            color: #06151a;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.92
+                ),
+
+                0 0 14px
+                rgba(
+                    37,
+                    200,
+                    223,
+                    0.95
+                ),
+
+                0 0 28px
+                rgba(
+                    94,
+                    231,
+                    245,
+                    0.5
+                );
+
+            animation:
+                cmlBrilliantPulse
+                1.3s
+                ease-in-out
+                infinite;
+        }
+
+
+        /* ==========================================
+           MOVE HISTORY BADGE
+           ========================================== */
+
+        .history-quality-brilliant {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #25c8df,
+                    #5ee7f5
+                );
+
+            color: #06151a;
+
+            box-shadow:
+                0 0 8px
+                rgba(
+                    37,
+                    200,
+                    223,
+                    0.75
+                );
+        }
+
+
+        /* ==========================================
+           BRILLIANT ANIMATION
+           ========================================== */
+
+        @keyframes cmlBrilliantPulse {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+
+                filter:
+                    brightness(1);
+            }
+
+
+            50% {
+
+                transform:
+                    scale(1.10);
+
+                filter:
+                    brightness(1.22);
+            }
+
+        }
+
+
+        /* ==========================================
+           GAME REPORT
+           ========================================== */
+
+        .report-quality-brilliant {
+
+            border:
+                1px solid
+                rgba(
+                    94,
+                    231,
+                    245,
+                    0.35
+                );
+
+            box-shadow:
+                inset 0 0 18px
+                rgba(
+                    37,
+                    200,
+                    223,
+                    0.06
+                );
+        }
+
+
+        .report-quality-brilliant strong {
+
+            color: #7ee7ff;
+        }
+
+
+        /* 9 report categories now */
+
+        .report-quality-grid {
+
+            grid-template-columns:
+                repeat(
+                    9,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+        }
+
+
+        @media (max-width: 850px) {
+
+            .report-quality-grid {
+
+                grid-template-columns:
+                    repeat(
+                        5,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .report-quality-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+})();
+
+
+// =====================================================
+// PIECE VALUES
+// Used only to detect a meaningful sacrifice.
+// =====================================================
+
+const cmlBrilliantPieceValues = {
+
+    p: 100,
+
+    n: 320,
+
+    b: 330,
+
+    r: 500,
+
+    q: 900,
+
+    k: 20000
+
+};
+
+
+// =====================================================
+// BRILLIANT CLASSIFICATION
+// =====================================================
+//
+// Brilliant is intentionally rare.
+//
+// Conditions:
+//
+// 1) The move MUST be Stockfish's exact best move.
+//
+// AND at least one of:
+//
+// 2) It creates a new forced mate.
+//
+// 3) It is a sound sacrifice:
+//    the opponent's best reply captures
+//    the moved piece, but the player still
+//    keeps a clearly good/winning position.
+//
+// 4) It creates a very large tactical swing
+//    from a non-winning position into a
+//    clearly winning position.
+//
+// =====================================================
+
+classifyMoveQuality = function (
+    move,
+    beforePlayer,
+    afterPlayer,
+    bestMoveUci,
+    afterBestMoveUci
+) {
+
+    // ==========================================
+    // RAW EVALUATION CHANGE
+    // ==========================================
+
+    let rawLoss =
+        beforePlayer -
+        afterPlayer;
+
+
+    let gain =
+        afterPlayer -
+        beforePlayer;
+
+
+    if (
+        !Number.isFinite(
+            rawLoss
+        )
+    ) {
+
+        rawLoss = 0;
+    }
+
+
+    if (
+        !Number.isFinite(
+            gain
+        )
+    ) {
+
+        gain = 0;
+    }
+
+
+    let loss =
+        rawLoss;
+
+
+    if (
+        loss <
+        0
+    ) {
+
+        loss = 0;
+    }
+
+
+    // ==========================================
+    // MOVE UCI
+    // ==========================================
+
+    const playedUci =
+        normalizeUci(
+            moveToUci(
+                move
+            )
+        );
+
+
+    const normalizedBestUci =
+        normalizeUci(
+            bestMoveUci
+        );
+
+
+    const normalizedAfterBest =
+        normalizeUci(
+            afterBestMoveUci
+        );
+
+
+    const hasValidBestMove =
+        /^[a-h][1-8][a-h][1-8][qrbn]?$/.test(
+            normalizedBestUci
+        );
+
+
+    const exactBest =
+
+        hasValidBestMove &&
+
+        playedUci ===
+        normalizedBestUci;
+
+
+    // ==========================================
+    // FORCED MATE
+    // ==========================================
+    //
+    // Mate positions are converted by
+    // ChessMoveLab to values near 100000.
+    //
+    // We only call it "creates mate" when
+    // the position before the move was NOT
+    // already detected as forced mate.
+    // ==========================================
+
+    const createsForcedMate =
+
+        exactBest &&
+
+        afterPlayer >=
+        90000 &&
+
+        beforePlayer <
+        90000;
+
+
+    // ==========================================
+    // SACRIFICE DETECTION
+    // ==========================================
+
+    const movedPieceValue =
+
+        cmlBrilliantPieceValues[
+            move?.piece
+        ] ||
+
+        0;
+
+
+    const capturedPieceValue =
+
+        cmlBrilliantPieceValues[
+            move?.captured
+        ] ||
+
+        0;
+
+
+    const afterBestValid =
+        /^[a-h][1-8][a-h][1-8][qrbn]?$/.test(
+            normalizedAfterBest
+        );
+
+
+    // Opponent's best reply ends on the square
+    // where our piece just moved.
+    //
+    // That normally means the moved piece
+    // is being captured.
+
+    const opponentCapturesMovedPiece =
+
+        afterBestValid &&
+
+        move?.to &&
+
+        normalizedAfterBest.slice(
+            2,
+            4
+        ) ===
+        move.to;
+
+
+    const sacrificedMaterial =
+
+        movedPieceValue -
+        capturedPieceValue;
+
+
+    const meaningfulSacrifice =
+
+        opponentCapturesMovedPiece &&
+
+        sacrificedMaterial >=
+        200;
+
+
+    // Sacrifice must still leave us with
+    // a clearly good position or forced mate.
+
+    const soundSacrifice =
+
+        exactBest &&
+
+        meaningfulSacrifice &&
+
+        (
+            afterPlayer >=
+            150 ||
+
+            afterPlayer >=
+            90000
+        );
+
+
+    // ==========================================
+    // LARGE TACTICAL WIN
+    // ==========================================
+
+    const tacticalWinningSwing =
+
+        exactBest &&
+
+        beforePlayer <
+        300 &&
+
+        afterPlayer >=
+        300 &&
+
+        gain >=
+        250;
+
+
+    // ==========================================
+    // BRILLIANT !!
+    // ==========================================
+
+    if (
+        createsForcedMate ||
+        soundSacrifice ||
+        tacticalWinningSwing
+    ) {
+
+        let message =
+            "Brilliant move!";
+
+
+        if (
+            createsForcedMate
+        ) {
+
+            message =
+                "Brilliant! This move creates a forced mating attack.";
+
+        } else if (
+            soundSacrifice
+        ) {
+
+            message =
+                "Brilliant! A strong sacrifice that keeps a winning advantage.";
+
+        } else if (
+            tacticalWinningSwing
+        ) {
+
+            message =
+                "Brilliant! This move creates a decisive tactical advantage.";
+        }
+
+
+        return {
+
+            label:
+                "Brilliant",
+
+            className:
+                "quality-brilliant",
+
+            lossCp:
+                loss,
+
+            message:
+                message
+
+        };
+    }
+
+
+    // ==========================================
+    // MISSED WINNING CHANCE
+    // ==========================================
+
+    const missedWinningChance =
+
+        beforePlayer >=
+        300 &&
+
+        loss >=
+        180 &&
+
+        afterPlayer <
+        150;
+
+
+    // ==========================================
+    // BEST
+    // ==========================================
+    //
+    // Best ONLY if the move is Stockfish's
+    // exact first choice.
+    // ==========================================
+
+    if (
+        exactBest
+    ) {
+
+        return {
+
+            label:
+                "Best",
+
+            className:
+                "quality-best",
+
+            lossCp:
+                loss,
+
+            message:
+                "You played Stockfish's top choice."
+
+        };
+    }
+
+
+    // ==========================================
+    // MISS
+    // ==========================================
+
+    if (
+        missedWinningChance
+    ) {
+
+        return {
+
+            label:
+                "Miss",
+
+            className:
+                "quality-miss",
+
+            lossCp:
+                loss,
+
+            message:
+                "A strong winning opportunity was missed."
+
+        };
+    }
+
+
+    // ==========================================
+    // GREAT
+    // ==========================================
+
+    if (
+        loss <=
+        35
+    ) {
+
+        return {
+
+            label:
+                "Great",
+
+            className:
+                "quality-great",
+
+            lossCp:
+                loss,
+
+            message:
+                "Very strong move."
+
+        };
+    }
+
+
+    // ==========================================
+    // GOOD
+    // ==========================================
+
+    if (
+        loss <=
+        90
+    ) {
+
+        return {
+
+            label:
+                "Good",
+
+            className:
+                "quality-good",
+
+            lossCp:
+                loss,
+
+            message:
+                "Solid move."
+
+        };
+    }
+
+
+    // ==========================================
+    // INACCURACY
+    // ==========================================
+
+    if (
+        loss <=
+        180
+    ) {
+
+        return {
+
+            label:
+                "Inaccuracy",
+
+            className:
+                "quality-inaccuracy",
+
+            lossCp:
+                loss,
+
+            message:
+                "The position became slightly worse."
+
+        };
+    }
+
+
+    // ==========================================
+    // MISTAKE
+    // ==========================================
+
+    if (
+        loss <=
+        350
+    ) {
+
+        return {
+
+            label:
+                "Mistake",
+
+            className:
+                "quality-mistake",
+
+            lossCp:
+                loss,
+
+            message:
+                "This move lost a significant part of the position."
+
+        };
+    }
+
+
+    // ==========================================
+    // BLUNDER
+    // ==========================================
+
+    return {
+
+        label:
+            "Blunder",
+
+        className:
+            "quality-blunder",
+
+        lossCp:
+            loss,
+
+        message:
+            "Major evaluation drop."
+
+    };
+
+};
+
+
+// =====================================================
+// NORMAL GAME CLASSIFICATION
+// Pass opponent's best reply to Brilliant detector.
+// =====================================================
+
+classifyMove = function (
+    index,
+    before,
+    after
+) {
+
+    // OPENING STILL HAS PRIORITY
+
+    if (
+        openingByMove.has(
+            index
+        )
+    ) {
+
+        return makeOpeningClassification(
+
+            openingByMove.get(
+                index
+            )
+
+        );
+    }
+
+
+    const move =
+        moves[
+            index -
+            1
+        ];
+
+
+    const beforeWhite =
+        resultToWhiteCentipawns(
+
+            index -
+            1,
+
+            before
+
+        );
+
+
+    const afterWhite =
+        resultToWhiteCentipawns(
+
+            index,
+
+            after
+
+        );
+
+
+    const beforePlayer =
+
+        move.color ===
+        "w"
+
+            ? beforeWhite
+
+            : -beforeWhite;
+
+
+    const afterPlayer =
+
+        move.color ===
+        "w"
+
+            ? afterWhite
+
+            : -afterWhite;
+
+
+    return classifyMoveQuality(
+
+        move,
+
+        beforePlayer,
+
+        afterPlayer,
+
+        before.bestMoveUci,
+
+        after.bestMoveUci
+
+    );
+
+};
+
+
+// =====================================================
+// TRY / EXPLORE MODE CLASSIFICATION
+// =====================================================
+
+classifyExploreMove = function (
+    move,
+    beforeFen,
+    beforeResult,
+    afterFen,
+    afterResult
+) {
+
+    const beforeWhite =
+        resultToWhiteCentipawnsFromFen(
+
+            beforeFen,
+
+            beforeResult
+
+        );
+
+
+    const afterWhite =
+        resultToWhiteCentipawnsFromFen(
+
+            afterFen,
+
+            afterResult
+
+        );
+
+
+    const beforePlayer =
+
+        move.color ===
+        "w"
+
+            ? beforeWhite
+
+            : -beforeWhite;
+
+
+    const afterPlayer =
+
+        move.color ===
+        "w"
+
+            ? afterWhite
+
+            : -afterWhite;
+
+
+    return classifyMoveQuality(
+
+        move,
+
+        beforePlayer,
+
+        afterPlayer,
+
+        beforeResult.bestMoveUci,
+
+        afterResult.bestMoveUci
+
+    );
+
+};
+
+
+// =====================================================
+// BRILLIANT VISUAL
+// Adds !! badge.
+// =====================================================
+
+const cmlOriginalGetQualityVisual =
+    getQualityVisual;
+
+
+getQualityVisual = function (
+    label
+) {
+
+    if (
+        label ===
+        "Brilliant"
+    ) {
+
+        return {
+
+            icon:
+                "!!",
+
+            boardClass:
+                "board-quality-brilliant",
+
+            historyClass:
+                "history-quality-brilliant"
+
+        };
+    }
+
+
+    return cmlOriginalGetQualityVisual(
+        label
+    );
+
+};
+
+
+// =====================================================
+// ADD BRILLIANT TO GAME REPORT
+// =====================================================
+
+let cmlReportBrilliant =
+    document.querySelector(
+        "#reportBrilliant"
+    );
+
+
+(function addBrilliantReportCard() {
+
+    if (
+        cmlReportBrilliant
+    ) {
+
+        return;
+    }
+
+
+    if (
+        !reportBest
+    ) {
+
+        return;
+    }
+
+
+    const bestCard =
+        reportBest.closest(
+            ".report-quality-item"
+        );
+
+
+    if (
+        !bestCard ||
+        !bestCard.parentNode
+    ) {
+
+        return;
+    }
+
+
+    const brilliantCard =
+        document.createElement(
+            "div"
+        );
+
+
+    brilliantCard.className =
+        "report-quality-item report-quality-brilliant";
+
+
+    brilliantCard.innerHTML = `
+
+        <strong
+            id="reportBrilliant"
+        >
+            0
+        </strong>
+
+        <span>
+            Brilliant
+        </span>
+
+    `;
+
+
+    bestCard.parentNode.insertBefore(
+
+        brilliantCard,
+
+        bestCard
+
+    );
+
+
+    cmlReportBrilliant =
+        document.querySelector(
+            "#reportBrilliant"
+        );
+
+})();
+
+
+// =====================================================
+// UPDATE BRILLIANT REPORT COUNTER
+// =====================================================
+
+function updateCmlBrilliantReportCount() {
+
+    if (
+        !cmlReportBrilliant
+    ) {
+
+        return;
+    }
+
+
+    let brilliantCount =
+        0;
+
+
+    for (
+        let i = 1;
+        i <= moves.length;
+        i++
+    ) {
+
+        const move =
+            moves[
+                i -
+                1
+            ];
+
+
+        // Only count the user's own moves.
+
+        if (
+            move.color !==
+            playerColor
+        ) {
+
+            continue;
+        }
+
+
+        const classification =
+            moveClassificationCache.get(
+                i
+            );
+
+
+        if (
+            classification?.label ===
+            "Brilliant"
+        ) {
+
+            brilliantCount++;
+        }
+
+    }
+
+
+    cmlReportBrilliant.textContent =
+        brilliantCount;
+
+}
+
+
+// =====================================================
+// HOOK GAME REPORT
+// =====================================================
+
+const cmlBrilliantOriginalUpdateGameReport =
+    updateGameReport;
+
+
+updateGameReport =
+    function () {
+
+        const result =
+            cmlBrilliantOriginalUpdateGameReport();
+
+
+        updateCmlBrilliantReportCount();
+
+
+        return result;
+
+    };
+
+
+// =====================================================
+// REBUILD EXISTING CLASSIFICATIONS
+// =====================================================
+
+moveClassificationCache.clear();
+
+
+if (
+    openingBookReady
+) {
+
+    applyOpeningClassifications();
+
+}
+
+
+refreshClassificationsFromCache();
+
+
+renderCurrentAnalysis();
+
+
+updateGameReport();

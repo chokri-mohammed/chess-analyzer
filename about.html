@@ -36,7 +36,12 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at top, #1c2945 0%, #0d1424 48%, #080d18 100%);
+                radial-gradient(
+                    circle at top,
+                    #1c2945 0%,
+                    #0d1424 48%,
+                    #080d18 100%
+                );
             color: #ffffff;
             min-height: 100vh;
             line-height: 1.7;
@@ -72,13 +77,25 @@
             place-items: center;
             border-radius: 14px;
             font-size: 28px;
-            background: linear-gradient(135deg, #6674ff, #945cff);
+            background:
+                linear-gradient(
+                    135deg,
+                    #6674ff,
+                    #945cff
+                );
         }
 
         .home-link {
             text-decoration: none;
             color: #cbd5e1;
-            border: 1px solid rgba(255,255,255,0.12);
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
             padding: 10px 18px;
             border-radius: 10px;
             transition: 0.2s;
@@ -86,15 +103,41 @@
 
         .home-link:hover {
             color: white;
-            background: rgba(255,255,255,0.06);
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
         }
 
         .card {
-            background: rgba(18, 27, 47, 0.82);
-            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                rgba(
+                    18,
+                    27,
+                    47,
+                    0.82
+                );
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
             border-radius: 24px;
             padding: 50px;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
         }
 
         .small-title {
@@ -106,7 +149,12 @@
         }
 
         h1 {
-            font-size: clamp(38px, 6vw, 64px);
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    64px
+                );
             line-height: 1.05;
             margin-bottom: 25px;
         }
@@ -131,9 +179,27 @@
             margin-top: 35px;
             padding: 20px;
             border-radius: 14px;
-            background: rgba(113, 92, 255, 0.10);
-            border: 1px solid rgba(133, 115, 255, 0.25);
+            background:
+                rgba(
+                    113,
+                    92,
+                    255,
+                    0.10
+                );
+            border:
+                1px solid
+                rgba(
+                    133,
+                    115,
+                    255,
+                    0.25
+                );
         }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
 
         footer {
             text-align: center;
@@ -142,20 +208,50 @@
             font-size: 14px;
         }
 
+        footer p {
+            margin-bottom: 0;
+            color: #7f8ba3;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #9daaff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
         .cookie-settings {
-            margin-top: 10px;
             border: 0;
+            padding: 0;
             background: none;
             color: #9daaff;
             cursor: pointer;
+            font-family: inherit;
             font-size: 14px;
         }
 
         .cookie-settings:hover {
+            color: #ffffff;
             text-decoration: underline;
         }
 
+
         @media (max-width: 650px) {
+
             .container {
                 padding-top: 22px;
             }
@@ -176,9 +272,14 @@
                 padding: 8px 12px;
                 font-size: 14px;
             }
+
+            .footer-links {
+                gap: 10px 16px;
+            }
         }
     </style>
 </head>
+
 
 <body>
 
@@ -191,8 +292,12 @@
                 href="index.html"
             >
                 <span class="logo">♞</span>
-                <span>CHESSMOVELAB</span>
+
+                <span>
+                    CHESSMOVELAB
+                </span>
             </a>
+
 
             <a
                 class="home-link"
@@ -263,9 +368,16 @@
 
             <div class="note">
 
-                <strong>Independent project</strong>
+                <strong>
+                    Independent project
+                </strong>
 
-                <p style="margin-top: 8px; margin-bottom: 0;">
+                <p
+                    style="
+                        margin-top: 8px;
+                        margin-bottom: 0;
+                    "
+                >
                     ChessMoveLab is an independent project and is not affiliated
                     with, endorsed by, or sponsored by Chess.com.
                 </p>
@@ -276,21 +388,49 @@
 
 
         <footer>
-            <p>© 2026 ChessMoveLab</p>
 
-            <button
-                class="cookie-settings"
-                type="button"
-                onclick="openCookieSettings()"
+            <nav
+                class="footer-links"
+                aria-label="Footer navigation"
             >
-                Cookie Settings
-            </button>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+
+                <button
+                    class="cookie-settings"
+                    type="button"
+                    onclick="openCookieSettings()"
+                >
+                    Cookie Settings
+                </button>
+
+            </nav>
+
+            <p>
+                © 2026 ChessMoveLab
+            </p>
+
         </footer>
 
     </div>
 
 
     <!-- COOKIE / ANALYTICS CONSENT -->
+
     <script src="consent.js"></script>
 
 </body>

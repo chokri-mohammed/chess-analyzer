@@ -13,7 +13,7 @@
 
     <meta
         name="description"
-        content="Read the ChessMoveLab Terms of Use for information about permitted use, chess analysis, third-party services and limitations."
+        content="Read the ChessMoveLab Terms of Use for information about permitted use, chess analysis, third-party services, advertising and limitations."
     >
 
     <meta
@@ -27,6 +27,7 @@
     >
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -35,7 +36,12 @@
 
         body {
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background:
                 radial-gradient(
                     circle at top,
@@ -43,7 +49,9 @@
                     #0d1424 48%,
                     #080d18 100%
                 );
+
             color: #ffffff;
+
             line-height: 1.7;
         }
 
@@ -64,19 +72,27 @@
             display: flex;
             align-items: center;
             gap: 12px;
+
             color: #ffffff;
+
             text-decoration: none;
+
             font-weight: 800;
+
             letter-spacing: 2px;
         }
 
         .logo {
             width: 48px;
             height: 48px;
+
             display: grid;
             place-items: center;
+
             border-radius: 14px;
+
             font-size: 28px;
+
             background:
                 linear-gradient(
                     135deg,
@@ -87,60 +103,121 @@
 
         .home-link {
             text-decoration: none;
+
             color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+
             padding: 10px 18px;
+
             border-radius: 10px;
+
             transition: 0.2s;
         }
 
         .home-link:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
         }
 
         .card {
-            background: rgba(18, 27, 47, 0.82);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                rgba(
+                    18,
+                    27,
+                    47,
+                    0.82
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
             border-radius: 24px;
+
             padding: 50px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
         }
 
         .small-title {
             color: #9daaff;
+
             font-size: 13px;
+
             font-weight: 800;
+
             letter-spacing: 4px;
+
             margin-bottom: 16px;
         }
 
         h1 {
-            font-size: clamp(38px, 6vw, 60px);
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    60px
+                );
+
             line-height: 1.05;
+
             margin-bottom: 15px;
         }
 
         .updated {
             color: #7f8ba3;
+
             font-size: 14px;
+
             margin-bottom: 35px;
         }
 
         h2 {
             margin-top: 38px;
+
             margin-bottom: 12px;
+
             font-size: 24px;
         }
 
         p {
             color: #c3ccdc;
+
             font-size: 16px;
+
             margin-bottom: 16px;
         }
 
         ul {
             margin: 10px 0 20px 25px;
+
             color: #c3ccdc;
         }
 
@@ -158,35 +235,107 @@
 
         .notice {
             margin-top: 35px;
+
             padding: 22px;
+
             border-radius: 15px;
-            background: rgba(113, 92, 255, 0.10);
-            border: 1px solid rgba(133, 115, 255, 0.25);
+
+            background:
+                rgba(
+                    113,
+                    92,
+                    255,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    133,
+                    115,
+                    255,
+                    0.25
+                );
         }
 
         .notice p {
             margin: 7px 0 0;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================== */
+
         footer {
             text-align: center;
+
             margin-top: 40px;
+
             color: #7f8ba3;
+
             font-size: 14px;
         }
 
-        .cookie-settings {
-            margin-top: 10px;
-            border: 0;
-            background: none;
+        footer p {
+            color: #7f8ba3;
+
+            font-size: 14px;
+
+            margin-bottom: 0;
+        }
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px 22px;
+
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
             color: #9daaff;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .cookie-settings {
+            border: 0;
+
+            padding: 0;
+
+            background: none;
+
+            color: #9daaff;
+
             cursor: pointer;
+
+            font-family: inherit;
+
             font-size: 14px;
         }
 
         .cookie-settings:hover {
+            color: #ffffff;
+
             text-decoration: underline;
         }
+
 
         @media (max-width: 650px) {
 
@@ -204,14 +353,22 @@
 
             .home-link {
                 padding: 8px 12px;
+
                 font-size: 14px;
             }
 
             .card {
                 padding: 28px 22px;
             }
+
+            .footer-links {
+                gap: 10px 16px;
+            }
+
         }
+
     </style>
+
 </head>
 
 
@@ -225,9 +382,17 @@
                 class="brand"
                 href="index.html"
             >
-                <span class="logo">♞</span>
-                <span>CHESSMOVELAB</span>
+
+                <span class="logo">
+                    ♞
+                </span>
+
+                <span>
+                    CHESSMOVELAB
+                </span>
+
             </a>
+
 
             <a
                 class="home-link"
@@ -245,12 +410,14 @@
                 TERMS OF USE
             </p>
 
+
             <h1>
                 Terms of Use
             </h1>
 
+
             <p class="updated">
-                Last updated: September 1, 2026
+                Last updated: September 7, 2026
             </p>
 
 
@@ -261,16 +428,24 @@
             </p>
 
 
+            <!-- =========================
+                 ABOUT
+            ========================== -->
+
             <h2>
                 1. About ChessMoveLab
             </h2>
 
             <p>
                 ChessMoveLab is an online chess analysis tool designed
-                to help users review chess games, evaluate positions
-                and learn from their moves.
+                to help users review chess games, evaluate positions,
+                explore alternative moves and learn from their games.
             </p>
 
+
+            <!-- =========================
+                 EDUCATIONAL PURPOSE
+            ========================== -->
 
             <h2>
                 2. Educational Purpose
@@ -278,15 +453,19 @@
 
             <p>
                 Chess analysis, move classifications, estimated performance,
-                engine evaluations and suggested moves are provided primarily
-                for informational and educational purposes.
+                estimated accuracy, engine evaluations and suggested moves
+                are provided primarily for informational and educational purposes.
             </p>
 
             <p>
                 Results may differ from analysis provided by other chess
-                websites, engines or services.
+                websites, engines, coaches or services.
             </p>
 
+
+            <!-- =========================
+                 STOCKFISH
+            ========================== -->
 
             <h2>
                 3. Chess Engine Analysis
@@ -294,50 +473,97 @@
 
             <p>
                 ChessMoveLab may use the Stockfish chess engine to evaluate
-                positions and suggest moves.
+                positions, compare moves and suggest strong continuations.
             </p>
 
             <p>
                 Engine results can vary depending on analysis depth,
-                available computing resources and position complexity.
+                computing resources, engine configuration and position complexity.
             </p>
 
+            <p>
+                An engine evaluation should be treated as an analytical aid
+                rather than an absolute explanation of a chess position.
+            </p>
+
+
+            <!-- =========================
+                 CLASSIFICATIONS
+            ========================== -->
 
             <h2>
                 4. Move Classifications
             </h2>
 
             <p>
-                Labels such as Best, Great, Good, Inaccuracy, Mistake,
-                Blunder or Miss are ChessMoveLab's own analysis categories.
+                ChessMoveLab may classify moves using labels such as
+                Brilliant, Best, Great, Good, Inaccuracy, Mistake,
+                Blunder, Miss or Opening.
             </p>
 
             <p>
-                These classifications should not be interpreted as official
-                ratings or classifications from Chess.com or any other
-                chess platform.
+                These labels are generated by ChessMoveLab using its own
+                analysis rules, engine evaluations and available game data.
+            </p>
+
+            <p>
+                They should not be interpreted as official move classifications
+                from Chess.com or any other chess platform.
             </p>
 
 
+            <!-- =========================
+                 ESTIMATED PERFORMANCE
+            ========================== -->
+
             <h2>
-                5. Public Game Information
+                5. Estimated Performance and Accuracy
+            </h2>
+
+            <p>
+                ChessMoveLab may display estimated accuracy, average evaluation
+                loss or estimated game performance.
+            </p>
+
+            <p>
+                These values are approximate indicators calculated by
+                ChessMoveLab. They are not official ratings and do not modify
+                or replace a player's rating on any chess platform.
+            </p>
+
+
+            <!-- =========================
+                 PUBLIC DATA
+            ========================== -->
+
+            <h2>
+                6. Public Game Information
             </h2>
 
             <p>
                 ChessMoveLab may retrieve publicly available chess game
-                information from third-party services when a user provides
+                information from third-party services when a user enters
                 a public username.
             </p>
 
             <p>
+                Available information may include usernames, ratings,
+                moves, results, dates and other public game information.
+            </p>
+
+            <p>
                 Users are responsible for using ChessMoveLab in accordance
-                with the terms and policies of any third-party platform
+                with applicable laws and the terms of any third-party service
                 associated with the information they request.
             </p>
 
 
+            <!-- =========================
+                 ACCEPTABLE USE
+            ========================== -->
+
             <h2>
-                6. Acceptable Use
+                7. Acceptable Use
             </h2>
 
             <p>
@@ -345,6 +571,7 @@
             </p>
 
             <ul>
+
                 <li>
                     Break applicable laws or regulations.
                 </li>
@@ -364,114 +591,238 @@
                 </li>
 
                 <li>
-                    Misrepresent ChessMoveLab as an official service of
-                    Chess.com or another company.
+                    Attempt to interfere with the normal operation
+                    or security of the website.
                 </li>
+
+                <li>
+                    Misrepresent ChessMoveLab as an official service
+                    of Chess.com or another organization.
+                </li>
+
             </ul>
 
 
+            <!-- =========================
+                 THIRD PARTY SERVICES
+            ========================== -->
+
             <h2>
-                7. Third-Party Services
+                8. Third-Party Services
             </h2>
 
             <p>
-                ChessMoveLab may depend on third-party services for features
-                such as hosting, analytics, chess data or engine-related
-                functionality.
+                ChessMoveLab may depend on third-party services or software
+                for parts of its functionality.
             </p>
 
             <p>
-                These third-party services are governed by their own terms,
-                policies and availability.
+                These may include services or resources related to:
+            </p>
+
+            <ul>
+
+                <li>
+                    Public chess game information
+                </li>
+
+                <li>
+                    Chess engine analysis
+                </li>
+
+                <li>
+                    Opening information
+                </li>
+
+                <li>
+                    Website analytics
+                </li>
+
+                <li>
+                    Advertising
+                </li>
+
+                <li>
+                    Website hosting and delivery
+                </li>
+
+            </ul>
+
+            <p>
+                Third-party services are governed by their own terms,
+                policies, licenses and availability.
             </p>
 
 
+            <!-- =========================
+                 ADVERTISING
+            ========================== -->
+
             <h2>
-                8. Service Availability
+                9. Advertising
+            </h2>
+
+            <p>
+                ChessMoveLab may display advertisements through Google AdSense
+                or other advertising providers.
+            </p>
+
+            <p>
+                Advertising content may be selected, delivered or measured
+                by third-party advertising services.
+            </p>
+
+            <p>
+                The presence of an advertisement on ChessMoveLab does not
+                necessarily mean that ChessMoveLab recommends or endorses
+                the advertised product, company or service.
+            </p>
+
+            <p>
+                Information about cookies, advertising technologies and
+                privacy choices is available in our
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>.
+            </p>
+
+
+            <!-- =========================
+                 SERVICE AVAILABILITY
+            ========================== -->
+
+            <h2>
+                10. Service Availability
             </h2>
 
             <p>
                 We aim to keep ChessMoveLab available and functional,
-                but we do not guarantee uninterrupted access.
+                but uninterrupted or error-free access cannot be guaranteed.
             </p>
 
             <p>
-                Features may be modified, temporarily unavailable or
-                discontinued when necessary.
+                Features may be changed, improved, temporarily unavailable
+                or discontinued when necessary.
+            </p>
+
+            <p>
+                Third-party service outages or changes may also affect
+                some ChessMoveLab features.
             </p>
 
 
+            <!-- =========================
+                 ACCURACY
+            ========================== -->
+
             <h2>
-                9. Accuracy of Information
+                11. Accuracy of Information
             </h2>
 
             <p>
-                ChessMoveLab is provided on an "as is" basis.
+                ChessMoveLab is provided on an "as is" and
+                "as available" basis.
             </p>
 
             <p>
-                We do not guarantee that every evaluation, opening name,
-                suggested move, estimated rating or classification will
+                We do not guarantee that every engine evaluation,
+                opening name, suggested move, move classification,
+                estimated performance value or other result will
                 always be accurate or complete.
             </p>
 
 
+            <!-- =========================
+                 LIABILITY
+            ========================== -->
+
             <h2>
-                10. Limitation of Liability
+                12. Limitation of Liability
             </h2>
 
             <p>
                 To the extent permitted by applicable law, ChessMoveLab
                 and its operators will not be responsible for losses or
-                damages resulting from use of, or inability to use,
-                the website.
+                damages resulting from use of, reliance on, or inability
+                to use the website.
             </p>
 
 
+            <!-- =========================
+                 INTELLECTUAL PROPERTY
+            ========================== -->
+
             <h2>
-                11. Intellectual Property
+                13. Intellectual Property
             </h2>
 
             <p>
-                ChessMoveLab's original website design, branding and
-                original content may not be copied or represented as
-                another official ChessMoveLab service without permission.
+                ChessMoveLab's original branding, website interface,
+                design elements and original written content may not
+                be copied or represented as another official ChessMoveLab
+                service without permission.
             </p>
 
             <p>
-                Third-party software, chess engines, datasets, trademarks
-                and other materials remain subject to their respective
-                licenses and owners.
+                Third-party software, chess engines, datasets, trademarks,
+                logos and other materials remain subject to their respective
+                licenses, terms and owners.
             </p>
 
 
+            <!-- =========================
+                 PRIVACY
+            ========================== -->
+
             <h2>
-                12. Analytics and Privacy
+                14. Privacy and Cookies
             </h2>
 
             <p>
-                ChessMoveLab may use analytics services only according to
-                the privacy choices available on the website.
+                ChessMoveLab may use browser storage, analytics,
+                cookies or similar technologies as described in our
+                Privacy Policy.
             </p>
 
             <p>
-                You can review or change your analytics preference through
-                the Cookie Settings option.
+                Where privacy choices are available, you can review
+                or change them through the
+                <strong>Cookie Settings</strong> option.
+            </p>
+
+            <p>
+                For more information, read our
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>.
             </p>
 
 
+            <!-- =========================
+                 CHANGES
+            ========================== -->
+
             <h2>
-                13. Changes to These Terms
+                15. Changes to These Terms
             </h2>
 
             <p>
-                These Terms of Use may be updated as ChessMoveLab evolves.
-                The latest version will be published on this page.
+                These Terms of Use may be updated as ChessMoveLab evolves,
+                introduces new features or changes the services it uses.
+            </p>
+
+            <p>
+                The latest version and revision date will be published
+                on this page.
             </p>
 
 
+            <!-- =========================
+                 CONTACT
+            ========================== -->
+
             <h2>
-                14. Contact
+                16. Contact
             </h2>
 
             <p>
@@ -479,15 +830,25 @@
             </p>
 
             <p>
-                <a href="mailto:chokrimohammed2005@gmail.com">
+
+                <a
+                    href="mailto:chokrimohammed2005@gmail.com"
+                >
                     chokrimohammed2005@gmail.com
                 </a>
+
             </p>
 
 
+            <!-- =========================
+                 DISCLAIMER
+            ========================== -->
+
             <div class="notice">
 
-                <strong>Independent project</strong>
+                <strong>
+                    Independent project
+                </strong>
 
                 <p>
                     ChessMoveLab is an independent project and is not affiliated
@@ -501,17 +862,41 @@
 
         <footer>
 
+            <nav
+                class="footer-links"
+                aria-label="Footer navigation"
+            >
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+
+                <button
+                    class="cookie-settings"
+                    type="button"
+                    onclick="openCookieSettings()"
+                >
+                    Cookie Settings
+                </button>
+
+            </nav>
+
+
             <p>
                 © 2026 ChessMoveLab
             </p>
-
-            <button
-                class="cookie-settings"
-                type="button"
-                onclick="openCookieSettings()"
-            >
-                Cookie Settings
-            </button>
 
         </footer>
 
@@ -519,6 +904,7 @@
 
 
     <!-- COOKIE / ANALYTICS CONSENT -->
+
     <script src="consent.js"></script>
 
 </body>

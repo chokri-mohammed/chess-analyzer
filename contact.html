@@ -27,6 +27,7 @@
     >
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -35,7 +36,12 @@
 
         body {
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background:
                 radial-gradient(
                     circle at top,
@@ -43,6 +49,7 @@
                     #0d1424 48%,
                     #080d18 100%
                 );
+
             color: #ffffff;
         }
 
@@ -63,8 +70,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
+
             text-decoration: none;
+
             color: #ffffff;
+
             font-weight: 800;
             letter-spacing: 2px;
         }
@@ -72,10 +82,14 @@
         .logo {
             width: 48px;
             height: 48px;
+
             display: grid;
             place-items: center;
+
             border-radius: 14px;
+
             font-size: 28px;
+
             background:
                 linear-gradient(
                     135deg,
@@ -86,52 +100,126 @@
 
         .home-link {
             text-decoration: none;
+
             color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+
             padding: 10px 18px;
+
             border-radius: 10px;
+
             transition: 0.2s;
         }
 
         .home-link:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
         }
 
         .card {
-            background: rgba(18, 27, 47, 0.82);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                rgba(
+                    18,
+                    27,
+                    47,
+                    0.82
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
             border-radius: 24px;
+
             padding: 50px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
         }
 
         .small-title {
             color: #9daaff;
+
             font-size: 13px;
+
             font-weight: 800;
+
             letter-spacing: 4px;
+
             margin-bottom: 16px;
         }
 
         h1 {
-            font-size: clamp(38px, 6vw, 64px);
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    64px
+                );
+
             line-height: 1.05;
+
             margin-bottom: 25px;
         }
 
         .intro {
             color: #c6cede;
+
             font-size: 17px;
+
             line-height: 1.7;
+
             margin-bottom: 35px;
         }
 
         .contact-box {
             padding: 28px;
+
             border-radius: 18px;
-            background: rgba(9, 16, 31, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            background:
+                rgba(
+                    9,
+                    16,
+                    31,
+                    0.65
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
             margin-bottom: 22px;
         }
 
@@ -142,41 +230,85 @@
 
         .contact-box p {
             color: #aeb9cd;
+
             line-height: 1.7;
+
             margin-bottom: 18px;
         }
 
         .email-button {
             display: inline-block;
+
             text-decoration: none;
+
             color: #ffffff;
+
             font-weight: 700;
+
             padding: 13px 20px;
+
             border-radius: 12px;
+
             background:
                 linear-gradient(
                     135deg,
                     #6674ff,
                     #945cff
                 );
-            transition: transform 0.2s;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .email-button:hover {
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 22px
+                rgba(
+                    102,
+                    116,
+                    255,
+                    0.25
+                );
         }
 
         .topics {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
             gap: 15px;
+
             margin-top: 28px;
         }
 
         .topic {
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.035
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.07
+                );
+
             border-radius: 14px;
+
             padding: 20px;
         }
 
@@ -187,36 +319,96 @@
 
         .topic span {
             color: #9ba8be;
+
             font-size: 14px;
+
             line-height: 1.5;
         }
 
         .note {
             margin-top: 30px;
+
             color: #8591a8;
+
             font-size: 14px;
+
             line-height: 1.6;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================== */
+
         footer {
             text-align: center;
+
             margin-top: 40px;
+
             color: #7f8ba3;
+
             font-size: 14px;
         }
 
-        .cookie-settings {
-            margin-top: 10px;
-            border: 0;
-            background: none;
+        footer p {
+            margin-bottom: 0;
+
+            color: #7f8ba3;
+
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px 22px;
+
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
             color: #9daaff;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .cookie-settings {
+            border: 0;
+
+            padding: 0;
+
+            background: none;
+
+            color: #9daaff;
+
             cursor: pointer;
+
+            font-family: inherit;
+
             font-size: 14px;
         }
 
         .cookie-settings:hover {
+            color: #ffffff;
+
             text-decoration: underline;
         }
+
 
         @media (max-width: 650px) {
 
@@ -234,6 +426,7 @@
 
             .home-link {
                 padding: 8px 12px;
+
                 font-size: 14px;
             }
 
@@ -244,8 +437,15 @@
             .topics {
                 grid-template-columns: 1fr;
             }
+
+            .footer-links {
+                gap: 10px 16px;
+            }
+
         }
+
     </style>
+
 </head>
 
 
@@ -259,9 +459,17 @@
                 class="brand"
                 href="index.html"
             >
-                <span class="logo">♞</span>
-                <span>CHESSMOVELAB</span>
+
+                <span class="logo">
+                    ♞
+                </span>
+
+                <span>
+                    CHESSMOVELAB
+                </span>
+
             </a>
+
 
             <a
                 class="home-link"
@@ -279,9 +487,11 @@
                 CONTACT
             </p>
 
+
             <h1>
                 Get in Touch
             </h1>
+
 
             <p class="intro">
                 Have a question, found a bug, or have an idea that could
@@ -298,7 +508,8 @@
                 <p>
                     Send us your feedback, questions or technical issues.
                     When reporting a bug, please include a short description
-                    of what happened.
+                    of what happened and, when possible, the steps that caused
+                    the issue.
                 </p>
 
                 <a
@@ -314,31 +525,58 @@
             <div class="topics">
 
                 <div class="topic">
-                    <strong>🐞 Bug Reports</strong>
+
+                    <strong>
+                        🐞 Bug Reports
+                    </strong>
+
                     <span>
-                        Tell us if something does not work correctly.
+                        Tell us if something does not work correctly
+                        while loading or analyzing a game.
                     </span>
+
                 </div>
 
-                <div class="topic">
-                    <strong>💡 Suggestions</strong>
-                    <span>
-                        Share ideas for new analysis features.
-                    </span>
-                </div>
 
                 <div class="topic">
-                    <strong>♟ Chess Analysis</strong>
+
+                    <strong>
+                        💡 Suggestions
+                    </strong>
+
                     <span>
-                        Questions about how ChessMoveLab analyzes games.
+                        Share ideas for new analysis tools,
+                        improvements or useful chess features.
                     </span>
+
                 </div>
 
+
                 <div class="topic">
-                    <strong>🤝 General Questions</strong>
+
+                    <strong>
+                        ♟ Chess Analysis
+                    </strong>
+
                     <span>
-                        Contact us for other ChessMoveLab questions.
+                        Ask questions about how ChessMoveLab
+                        displays engine evaluations and game analysis.
                     </span>
+
+                </div>
+
+
+                <div class="topic">
+
+                    <strong>
+                        🤝 General Questions
+                    </strong>
+
+                    <span>
+                        Contact us for other questions related
+                        to ChessMoveLab and the website.
+                    </span>
+
                 </div>
 
             </div>
@@ -353,21 +591,50 @@
 
 
         <footer>
-            <p>© 2026 ChessMoveLab</p>
 
-            <button
-                class="cookie-settings"
-                type="button"
-                onclick="openCookieSettings()"
+            <nav
+                class="footer-links"
+                aria-label="Footer navigation"
             >
-                Cookie Settings
-            </button>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+
+                <button
+                    class="cookie-settings"
+                    type="button"
+                    onclick="openCookieSettings()"
+                >
+                    Cookie Settings
+                </button>
+
+            </nav>
+
+
+            <p>
+                © 2026 ChessMoveLab
+            </p>
+
         </footer>
 
     </div>
 
 
     <!-- COOKIE / ANALYTICS CONSENT -->
+
     <script src="consent.js"></script>
 
 </body>
